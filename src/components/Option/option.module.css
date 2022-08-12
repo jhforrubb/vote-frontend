@@ -1,0 +1,31 @@
+.option {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  width: 500px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.option:hover {
+  opacity: 0.5;
+}
+
+.option:active {
+  opacity: 0.8;
+}
+
+.option_name {
+  width: 150px;
+}
+
+.option_vote {
+  margin-left: 10px;
+}
+
+.option_voted {
+  margin-left: 50px;
+}

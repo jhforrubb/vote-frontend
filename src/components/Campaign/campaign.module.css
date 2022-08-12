@@ -1,0 +1,12 @@
+.campaign {
+  padding: 10px;
+}
+
+.campaign_title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.campaign_time {
+  margin-top: 5px;
+}

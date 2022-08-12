@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.form_input {
+  width: 100%;
+}
+
+.form_text {
+  margin-left: 8px;
+  width: 500px;
+  max-width: 500px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
