@@ -10,3 +10,11 @@
 .campaign_time {
   margin-top: 5px;
 }
+
+.campaign_error {
+  background-color: red;
+  color: yellow;
+  font-size: 25px;
+  font-weight: 600;
+  width: fit-content;
+}

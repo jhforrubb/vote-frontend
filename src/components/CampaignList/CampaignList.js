@@ -1,55 +1,33 @@
 import { useEffect, useCallback, useState } from "react";
-import axios from "axios";
 import Campaign from "../Campaign/Campaign";
+import { fetchGetCampaign } from "../../services/api/campaign";
+import { fetchPostVote } from "../../services/api/vote";
 
 function CampaignList() {
   const [list, setList] = useState([]);
 
   const getCampaign = useCallback(async () => {
     try {
-      let res = await axios.get("http://localhost:4000/campaign", {
-        headers: {
-          hkid: window.localStorage.getItem("voting_hkid"),
-        },
-      });
-      setList(res.data);
+      setList(await fetchGetCampaign());
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
-    // fetch campaign list from nest
   }, []);
-
-  const handleVote = useCallback(
-    async (campaignId, optionId) => {
-      try {
-        await axios.post("http://localhost:4000/vote", {
-          campaign_id: campaignId,
-          option_id: optionId,
-          hkid: window.localStorage.getItem("voting_hkid"),
-        });
-
-        await getCampaign();
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    [getCampaign]
-  );
 
   const renderCampaignList = useCallback(() => {
     return list.map((cpn) => (
       <Campaign
         key={cpn._id}
         title={cpn.title}
-        startTime={cpn.start_time}
-        endTime={cpn.end_time}
+        startTime={cpn.startTime}
+        endTime={cpn.endTime}
         options={cpn.options}
         count={cpn.count}
         voted={cpn.voted}
-        handleVote={handleVote}
+        setList={setList}
       />
     ));
-  }, [handleVote, list]);
+  }, [list]);
 
   useEffect(() => {
     getCampaign();
